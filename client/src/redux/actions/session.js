@@ -1,20 +1,43 @@
+// src/redux/actions/userActions.js
+import axios from "../../api";
 import { session } from "../reducers/session";
-import { push } from "redux-first-history";
-import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000";
+export const { setUsers, addUser, updateUser, deleteUser } = session.actions;
 
-export const { setHelloWorld } = session.actions;
-
-export const getHelloWorld = () => async (dispatch) => {
+export const fetchUsers = () => async (dispatch) => {
   try {
-    const response = await axios.get(`/api/hello-world`);
-
-    console.log("res", response);
-    if (response.status === 200) {
-      dispatch(setHelloWorld(response.data.hello));
-    }
+    console.log("fetching...");
+    const response = await axios.get("/users");
+    console.log("response11", response);
+    dispatch(setUsers(response.data));
   } catch (error) {
-    console.error(error);
+    console.error("Failed to fetch users:", error);
+  }
+};
+
+export const createUser = (userData) => async (dispatch) => {
+  try {
+    const response = await axios.post("/users", userData);
+    dispatch(addUser(response.data));
+  } catch (error) {
+    console.error("Failed to create user:", error);
+  }
+};
+
+export const editUser = (id, userData) => async (dispatch) => {
+  try {
+    const response = await axios.put(`/users/${id}`, userData);
+    dispatch(updateUser(response.data));
+  } catch (error) {
+    console.error("Failed to update user:", error);
+  }
+};
+
+export const removeUser = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`/users/${id}`);
+    dispatch(deleteUser(id));
+  } catch (error) {
+    console.error("Failed to delete user:", error);
   }
 };

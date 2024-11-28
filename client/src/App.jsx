@@ -2,15 +2,18 @@ import React from "react";
 import PageRoutes from "./PageRoutes";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 import store from "./redux/store";
 
 function App() {
   return (
-    <Provider store={store} redirectUri={window.location.origin}>
-      <Toaster />
-      <PageRoutes />
-    </Provider>
+    <Auth0Provider>
+      <Provider store={store} redirectUri={window.location.origin}>
+        <Toaster />
+        <PageRoutes />
+      </Provider>
+    </Auth0Provider>
   );
 }
 
