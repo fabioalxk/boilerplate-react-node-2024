@@ -1,5 +1,5 @@
 import express from "express";
-import userRoutes from "./routes/users";
+import userRoutes from "./routes/userRoutes";
 import sequelize from "./config/database";
 import cors from "cors";
 
