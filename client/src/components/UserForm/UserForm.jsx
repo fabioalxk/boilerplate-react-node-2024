@@ -1,7 +1,7 @@
-// src/components/UserForm.js
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions/session";
+import "./UserForm.scss";
 
 function UserForm() {
   const dispatch = useDispatch();
@@ -16,20 +16,25 @@ function UserForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="user-form">
+      <h2 className="user-form__title">Add a New User</h2>
       <input
         type="text"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        className="user-form__input"
       />
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="user-form__input"
       />
-      <button type="submit">Add User</button>
+      <button type="submit" className="user-form__button">
+        Add User
+      </button>
     </form>
   );
 }
