@@ -1,25 +1,30 @@
 terraform {
-  backend "local" {
-    path = "terraform.tfstate"
+  backend "s3" {
+    bucket         = "fabioalxk2-terraform-state" # Seu bucket S3
+    key            = "terraform/rds-postgres/terraform.tfstate"
+    region         = "us-east-1" # Altere para a sua região
+    dynamodb_table = "terraform-locks" # Opcional: crie essa tabela para gerenciamento de locks
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "us-east-1" # Altere para a sua região
 }
 
-# Rede e Subnets básicas
-resource "aws_security_group" "fabioalxk2_sg" {
-  name        = "fabioalxk2_sg"
-  description = "Allow all inbound traffic"
-  
+# Security Group para o RDS
+resource "aws_security_group" "rds_sg" {
+  name        = "rds-security-group"
+  description = "Security group for RDS PostgreSQL"
+
+  # Permitir acesso à porta 5432 de qualquer IP (substitua 0.0.0.0/0 por um CIDR específico em produção)
   ingress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] # Limite isso para o IP ou range permitido em produção
   }
 
+  # Permitir saída para qualquer destino
   egress {
     from_port   = 0
     to_port     = 0
@@ -28,98 +33,33 @@ resource "aws_security_group" "fabioalxk2_sg" {
   }
 }
 
-resource "aws_subnet" "fabioalxk2_subnet" {
-  vpc_id     = "default"
-  cidr_block = "10.0.1.0/24"
-}
-
-# Cluster ECS
-resource "aws_ecs_cluster" "fabioalxk2_cluster" {
-  name = "fabioalxk2-cluster"
-}
-
-# Banco de Dados RDS PostgreSQL
-resource "aws_db_instance" "fabioalxk2_postgres" {
-  allocated_storage    = 20
-  engine               = "postgres"
-  engine_version       = "13.4"
-  instance_class       = "db.t3.micro"
-  db_name              = "mydb"
-  username             = "myuser"
-  password             = "mypassword"
-  publicly_accessible  = true
-  skip_final_snapshot  = true
-  vpc_security_group_ids = [aws_security_group.fabioalxk2_sg.id]
+resource "aws_db_instance" "postgres" {
+  allocated_storage       = 20
+  engine                  = "postgres"
+  engine_version          = "16.1"
+  instance_class          = "db.t3.micro"
+  db_name                 = "mydb"
+  username                = "myuser"
+  password                = "mypassword"
+  parameter_group_name    = "default.postgres16"
+  publicly_accessible     = true
+  skip_final_snapshot     = true
+  vpc_security_group_ids  = [aws_security_group.rds_sg.id]
 }
 
 
 
-# Configuração de uma task do ECS para o Node.js server
-resource "aws_ecs_task_definition" "fabioalxk2_node_task" {
-  family                   = "fabioalxk2-node-task"
-  network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
-  cpu                      = "256"
-  memory                   = "512"
-
-  container_definitions = jsonencode([
-    {
-      name        = "nodejs-server"
-      image       = "meu-registry/node-server:latest"
-      portMappings = [
-        {
-          containerPort = 3000
-          hostPort      = 3000
-        }
-      ]
-    }
-  ])
+output "rds_endpoint" {
+  description = "RDS Endpoint"
+  value       = aws_db_instance.postgres.endpoint
 }
 
-# Configuração de um service ECS para o Node.js server
-resource "aws_ecs_service" "fabioalxk2_node_service" {
-  name            = "fabioalxk2-node-service"
-  cluster         = aws_ecs_cluster.fabioalxk2_cluster.id
-  task_definition = aws_ecs_task_definition.fabioalxk2_node_task.arn
-  desired_count   = 1
-
-  network_configuration {
-    subnets         = [aws_subnet.fabioalxk2_subnet.id]
-    security_groups = [aws_security_group.fabioalxk2_sg.id]
-  }
+output "rds_username" {
+  description = "RDS Username"
+  value       = aws_db_instance.postgres.username
 }
 
-# Configuração de uma task do ECS para o React client
-resource "aws_ecs_task_definition" "fabioalxk2_react_task" {
-  family                   = "fabioalxk2-react-task"
-  network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
-  cpu                      = "256"
-  memory                   = "512"
-
-  container_definitions = jsonencode([
-    {
-      name        = "react-client"
-      image       = "meu-registry/react-client:latest"
-      portMappings = [
-        {
-          containerPort = 3000
-          hostPort      = 3000
-        }
-      ]
-    }
-  ])
-}
-
-# Configuração de um service ECS para o React client
-resource "aws_ecs_service" "fabioalxk2_react_service" {
-  name            = "fabioalxk2-react-service"
-  cluster         = aws_ecs_cluster.fabioalxk2_cluster.id
-  task_definition = aws_ecs_task_definition.fabioalxk2_react_task.arn
-  desired_count   = 1
-
-  network_configuration {
-    subnets         = [aws_subnet.fabioalxk2_subnet.id]
-    security_groups = [aws_security_group.fabioalxk2_sg.id]
-  }
+output "rds_name" {
+  description = "RDS Database Name"
+  value       = aws_db_instance.postgres.db_name
 }

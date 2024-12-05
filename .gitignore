@@ -3,3 +3,4 @@
 /server/dist
 .terraform
 /.terraform
+/server/dist

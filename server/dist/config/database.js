@@ -1,8 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const sequelize_1 = require("sequelize");
-const sequelize = new sequelize_1.Sequelize("mydb", "myuser", "mypassword", {
-    host: "localhost",
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: "postgres",
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
+    },
 });
-exports.default = sequelize;
+export default sequelize;

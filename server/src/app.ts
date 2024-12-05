@@ -1,9 +1,10 @@
+// app.ts
 import express from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
-import sequelize from "./config/database";
-import userRoutes from "./routes/userRoutes";
+import sequelize from "./config/database.js";
+import userRoutes from "./routes/userRoutes.js";
 import dotenv from "dotenv";
 dotenv.config();
 
