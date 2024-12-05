@@ -1,11 +1,12 @@
 // app.ts
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 import sequelize from "./config/database.js";
 import userRoutes from "./routes/userRoutes.js";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const app = express();
@@ -22,6 +23,10 @@ sequelize
   .catch((error) => {
     console.error("Database synchronization error:", error);
   });
+
+app.get("/", async (req: Request, res: Response): Promise<void> => {
+  res.json({ message: "Server is running" });
+});
 
 app.use("/api/users", userRoutes);
 
