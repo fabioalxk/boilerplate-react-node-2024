@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts",
-    "test": "jest"
+    "dev": "npx tsx watch src/index.ts",
+    "start": "node dist/src/index.js",
+    "build": "npx tsc",
+    "ts-check": "tsc --noEmit"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
