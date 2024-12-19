@@ -18,9 +18,7 @@ services:
       retries: 5
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: aws-ecs-fargate-nodejs-todo-app
     ports:
       - "3000:3000"
     environment:
