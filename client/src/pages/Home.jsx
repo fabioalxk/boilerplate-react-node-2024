@@ -1,16 +1,14 @@
 // src/pages/Home.js
 import React from "react";
 import "./Home.scss";
-import UserForm from "../components/UserForm/UserForm";
-import UserList from "../components/UserList/UserList";
+import PokemonList from "../components/PokemonList/PokemonList";
 
 function Home() {
   return (
-    <>
-      <div>test</div>
-      <UserForm />
-      <UserList />
-    </>
+    <div>
+      <h1>Pokemon App</h1>
+      <PokemonList />
+    </div>
   );
 }
 

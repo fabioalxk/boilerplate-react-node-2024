@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-
 import { createReduxHistoryContext } from "redux-first-history";
 import { createBrowserHistory } from "history";
-
-import { session } from "./reducers/session";
+import { pokemonSlice } from "../redux/reducers/pokemon";
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
   createReduxHistoryContext({
@@ -17,9 +15,9 @@ const middleware = [routerMiddleware];
 export const store = configureStore({
   reducer: combineReducers({
     router: routerReducer,
-    session: session.reducer,
+    pokemon: pokemonSlice.reducer,
   }),
-  middleware: (getDefaultMiddleware) =>
+  middleware: (getDefaultMiddleware) => 
     getDefaultMiddleware().concat(middleware),
   devTools: process.env.NODE_ENV !== "production",
 });
