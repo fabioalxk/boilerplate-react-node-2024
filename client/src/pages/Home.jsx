@@ -7,7 +7,6 @@ import UserList from "../components/UserList/UserList";
 function Home() {
   return (
     <>
-      <div>test</div>
       <UserForm />
       <UserList />
     </>
