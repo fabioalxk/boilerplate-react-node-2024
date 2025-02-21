@@ -1,7 +1,6 @@
-import { Request, Response } from "express";
 import { getUserById } from "../../services/userService/getUserById";
 
-export const getUser = async (req: Request, res: Response): Promise<void> => {
+export const getUser = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await getUserById(id);
@@ -10,7 +9,7 @@ export const getUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
     res.json(user);
-  } catch (error: any) {
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };

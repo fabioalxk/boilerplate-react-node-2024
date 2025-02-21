@@ -1,25 +1,7 @@
-import { DataTypes, Model, Optional } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/database";
 
-interface UserAttributes {
-  id: number;
-  name: string;
-  email: string;
-}
-
-interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
-
-class User
-  extends Model<UserAttributes, UserCreationAttributes>
-  implements UserAttributes
-{
-  public id!: number;
-  public name!: string;
-  public email!: string;
-
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
-}
+class User extends Model {}
 
 User.init(
   {
@@ -40,11 +22,17 @@ User.init(
         isEmail: true,
       },
     },
+    googleId: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: true
+    }
   },
   {
     sequelize,
     tableName: "users",
     timestamps: true,
+    modelName: 'User'
   }
 );
 
