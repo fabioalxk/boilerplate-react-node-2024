@@ -1,4 +1,4 @@
-import { deleteUserById } from "../../services/userService/deleteUserById";
+import { deleteUserById } from "../../services/userService/deleteUserById.js";
 
 export const deleteUser = async (req, res) => {
   const { id } = req.params;
