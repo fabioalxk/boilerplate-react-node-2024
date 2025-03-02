@@ -1,0 +1,114 @@
+.leon-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #4169e1; // Azul royal como na imagem
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+.header {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 60px; /* Altura fixa para padronização */
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.back-button {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+.info-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: white;
+  color: #4169e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.content {
+  flex: 1;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza os botões verticalmente */
+  gap: 2px; /* Reduzido ainda mais o espaçamento entre as opções */
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 10px; /* Adicionado padding no topo para afastar do header */
+}
+
+.leon-option {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px 20px; /* Reduzido o padding vertical */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 4px 0; /* Reduzido a margem vertical */
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.option-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.option-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.arrow-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #4169e1;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+} 

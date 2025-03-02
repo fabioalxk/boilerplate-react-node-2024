@@ -1,0 +1,145 @@
+.pre-oxigenacao-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #4169e1;
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+.header {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 60px; /* Altura fixa para padronização */
+}
+
+.back-button {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-content {
+  text-align: center;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.info-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: white;
+  color: #4169e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.patient-info {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin: 0 10px 15px 10px;
+  border-radius: 10px;
+}
+
+.info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  &.right {
+    text-align: right;
+  }
+}
+
+.info-item {
+  line-height: 1.3;
+  font-size: 0.95rem;
+}
+
+.content {
+  flex: 1;
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.instruction-text {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  padding: 0 10px;
+}
+
+.image-container {
+  width: 85%;
+  max-width: 350px;
+  margin: 20px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+}
+
+.procedure-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.blue-button {
+  width: 90%;
+  max-width: 400px;
+  padding: 15px;
+  background-color: #4169e1;
+  border: 2px solid white;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  margin: 20px auto 10px auto;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    background-color: #3658c5;
+  }
+} 

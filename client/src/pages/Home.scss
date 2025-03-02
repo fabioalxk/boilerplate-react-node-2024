@@ -10,7 +10,8 @@ body,
 #root {
   height: 100%;
   width: 100%;
-  overflow: hidden; /* Remove a barra de rolagem */
+  overflow: hidden;
+  /* Remove a barra de rolagem */
 }
 
 .game {
@@ -21,13 +22,15 @@ body,
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000; /* Adiciona um fundo preto para preencher áreas vazias */
+  background-color: #000;
+  /* Adiciona um fundo preto para preencher áreas vazias */
 }
 
 .scene-image {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Mantém a proporção da imagem sem distorcer */
+  object-fit: contain;
+  /* Mantém a proporção da imagem sem distorcer */
   position: absolute;
 }
 
@@ -40,7 +43,8 @@ body,
   font-size: 1.5em;
   text-shadow: 2px 2px 4px #000;
   text-align: center;
-  max-width: 80%; /* Limita a largura do texto para telas menores */
+  max-width: 80%;
+  /* Limita a largura do texto para telas menores */
 }
 
 .options {
@@ -62,7 +66,8 @@ body,
   cursor: pointer;
   border-radius: 5px;
   width: 250px;
-  max-width: 80%; /* Para garantir responsividade */
+  max-width: 80%;
+  /* Para garantir responsividade */
   text-align: center;
 }
 
@@ -80,4 +85,123 @@ body,
   border-radius: 5px;
   cursor: pointer;
   z-index: 1001;
+}
+
+// Estilos para o aplicativo doc-facil
+.doc-facil-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #4169e1; // Azul royal semelhante ao da imagem
+  color: white;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.logo-section {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.logo-text {
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.info-section {
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.info-paragraph {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.buttons-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.procedure-button {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.procedure-text {
+  margin: 0;
+
+  .procedure-label {
+    font-size: 1rem;
+    font-weight: normal;
+    display: block;
+  }
+
+  .procedure-type {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+  }
+}
+
+.arrow-icon {
+  color: #4169e1;
+  font-size: 1.5rem;
+}
+
+.footer {
+  margin-top: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  padding: 10px;
+}
+
+.footer-text {
+  margin: 5px 0;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+}
+
+@media (max-width: 600px) {
+  .logo-section {
+    margin-top: 40px;
+  }
+
+  .info-paragraph {
+    font-size: 1rem;
+  }
 }
