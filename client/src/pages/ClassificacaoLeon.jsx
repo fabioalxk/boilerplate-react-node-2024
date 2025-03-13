@@ -11,22 +11,23 @@ function ClassificacaoLeon() {
         <div className="info-button">i</div>
       </div>
       
-      <div className="content">
-        <Link to="/intubacao-preditor" className="leon-option">
-          <div className="option-text">
-            <span className="option-title">Com preditor</span>
-            <span className="option-subtitle">de Via Aérea Difícil - VAD</span>
-          </div>
-          <div className="arrow-icon">→</div>
-        </Link>
-        
-        <Link to="/intubacao-sem-preditor" className="leon-option">
-          <div className="option-text">
-            <span className="option-title">Sem preditor</span>
-            <span className="option-subtitle">de Via Aérea Difícil - VAD</span>
-          </div>
-          <div className="arrow-icon">→</div>
-        </Link>
+      <div className="content leon-content">
+        <div className="buttons-container">
+          <Link to="/intubacao-preditor" className="leon-option">
+            <div className="option-text">
+              <span className="option-title">Com preditor</span>
+              <span className="option-subtitle">de Via Aérea Difícil - VAD</span>
+            </div>
+            <div className="arrow-icon">→</div>
+          </Link>
+          <Link to="/intubacao-sem-preditor" className="leon-option">
+            <div className="option-text">
+              <span className="option-title">Sem preditor</span>
+              <span className="option-subtitle">de Via Aérea Difícil - VAD</span>
+            </div>
+            <div className="arrow-icon">→</div>
+          </Link>
+        </div>
       </div>
     </div>
   );

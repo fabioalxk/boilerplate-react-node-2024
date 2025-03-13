@@ -1,10 +1,8 @@
 import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./PreOxigenacao.scss";
-// Importar a imagem corretamente
-import entubadoImg from "../assets/entubado.png";
-// A imagem do paciente sendo entubado precisa ser adicionada aos assets do projeto
-// Você precisará adicionar uma imagem com nome "pre-oxigenacao.png" na pasta assets
+// Using the image from the public assets directory
+// No need to import the image when it's in the public directory
 
 function PreOxigenacao() {
   const navigate = useNavigate();
@@ -17,10 +15,10 @@ function PreOxigenacao() {
     imc: "-"
   };
 
-  // Função para navegar para a próxima tela (a ser implementada)
+  // Função para navegar para a próxima tela
   const handleProsseguir = () => {
-    // Adicionar futuramente a navegação para a próxima tela
-    alert("Próxima etapa em desenvolvimento");
+    // Navegar para a página de Posicionamento com os dados do paciente
+    navigate("/posicionamento", { state: { patientData } });
   };
 
   return (
@@ -51,9 +49,9 @@ function PreOxigenacao() {
         </div>
 
         <div className="image-container">
-          {/* Nota: Esta imagem precisa ser adicionada aos assets do projeto */}
+          {/* Using the image from the public assets directory */}
           <img 
-            src={entubadoImg} 
+            src="/assets/entubado.png" 
             alt="Procedimento de pré-oxigenação" 
             className="procedure-image"
           />

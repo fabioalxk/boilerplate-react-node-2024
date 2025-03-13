@@ -15,6 +15,7 @@
   height: 60px; /* Altura fixa para padronização */
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-bottom: 5px; /* Adicionado margem inferior para criar mais espaço */
 }
 
 .back-button {
@@ -53,35 +54,49 @@
   transform: translateY(-50%);
 }
 
-.content {
+/* Estilos específicos para a página */
+.leon-content {
   flex: 1;
-  padding: 0 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centraliza os botões verticalmente */
-  gap: 2px; /* Reduzido ainda mais o espaçamento entre as opções */
+  justify-content: center;
+  padding: 0 20px;
   max-width: 500px;
   margin: 0 auto;
   width: 100%;
-  padding-top: 10px; /* Adicionado padding no topo para afastar do header */
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
 }
 
 .leon-option {
   background-color: white;
-  border-radius: 10px;
-  padding: 15px 20px; /* Reduzido o padding vertical */
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
   color: #333;
+  margin: 0;
+  border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 4px 0; /* Reduzido a margem vertical */
   transition: transform 0.2s ease;
   
   &:hover {
     transform: translateY(-2px);
   }
+}
+
+.leon-option:first-child {
+  /* Removido o border-bottom */
+}
+
+.leon-option:last-child {
+  /* Mantido vazio para clareza */
 }
 
 .option-text {

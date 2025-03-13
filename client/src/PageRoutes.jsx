@@ -9,6 +9,7 @@ import IntubacaoPreditor from "./pages/IntubacaoPreditor";
 import IntubacaoSemPreditor from "./pages/IntubacaoSemPreditor";
 import DadosPaciente from "./pages/DadosPaciente";
 import PreOxigenacao from "./pages/PreOxigenacao";
+import Posicionamento from "./pages/Posicionamento";
 
 const PageRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const PageRoutes = () => {
         <Route path="/intubacao-sem-preditor" element={<IntubacaoSemPreditor />} />
         <Route path="/dados-paciente" element={<DadosPaciente />} />
         <Route path="/pre-oxigenacao" element={<PreOxigenacao />} />
+        <Route path="/posicionamento" element={<Posicionamento />} />
       </Routes>
     </Router>
   );

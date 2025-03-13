@@ -18,6 +18,7 @@
   height: 60px; /* Altura fixa para padronização */
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-bottom: 5px; /* Adicionado margem inferior para criar mais espaço */
 }
 
 .back-button {
@@ -55,10 +56,12 @@
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
+  padding-top: 30px;
 }
 
 .form-section {
   margin-bottom: 20px;
+  padding-top: 10px;
 }
 
 .form-group {
@@ -71,6 +74,7 @@
   color: #666;
   margin-bottom: 10px;
   display: block;
+  padding-top: 5px;
 }
 
 .required {
