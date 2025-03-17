@@ -1,91 +1,88 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./PoliticaPrivacidade.scss"; // Reaproveitamos o mesmo estilo
+import { Link, useNavigate } from "react-router-dom";
+import "./Eula.scss";
 
-function Eula() {
+const Eula = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="eula-container">
-      <div className="header">
-        <Link to="/" className="back-button">←</Link>
-        <h1 className="header-title">Termos de Uso (EULA)</h1>
-      </div>
+      {/* Header */}
+      <header className="header">
+        <button
+          onClick={() => navigate(-1)}
+          className="back-button"
+          aria-label="Voltar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h1 className="header-title">
+          EULA
+        </h1>
+      </header>
 
+      {/* Conteúdo principal */}
       <div className="content">
-        <div className="section">
-          <h2 className="section-title">Termos de Uso do doc-facil</h2>
-
-          <p className="policy-text">
-            Última atualização: Junho 2024
+        <div className="eula-content">
+          <h2>
+            Contrato de Licença de Usuário Final
+          </h2>
+          
+          <p>
+            Este Contrato de Licença de Usuário Final ("EULA") é um acordo legal entre você 
+            e os desenvolvedores do aplicativo doc-facil.
           </p>
-
-          <p className="policy-text">
-            Bem-vindo ao doc-facil. Ao utilizar este aplicativo, você concorda com estes termos de uso.
-            Por favor, leia-os atentamente.
+          
+          <h3>
+            1. Concessão de Licença
+          </h3>
+          
+          <p>
+            Os desenvolvedores concedem a você uma licença limitada, não exclusiva e intransferível para 
+            usar o aplicativo doc-facil para fins médicos auxiliares.
           </p>
-
-          <h3 className="subsection-title">1. Aceitação dos Termos</h3>
-          <p className="policy-text">
-            Ao utilizar o aplicativo doc-facil, você concorda em cumprir e estar vinculado a estes Termos de Uso.
-            Se você não concordar com qualquer parte destes termos, não deverá utilizar o aplicativo.
+          
+          <h3>
+            2. Restrições de Uso
+          </h3>
+          
+          <p>
+            Você concorda em não modificar, adaptar, traduzir, descompilar, fazer engenharia 
+            reversa ou tentar derivar o código-fonte do aplicativo.
           </p>
-
-          <h3 className="subsection-title">2. Descrição do Serviço</h3>
-          <p className="policy-text">
-            O doc-facil é um aplicativo médico auxiliar que fornece informações de suporte para procedimentos de intubação
-            traqueal em pacientes adultos. O aplicativo é destinado exclusivamente a profissionais de saúde qualificados.
-          </p>
-
-          <h3 className="subsection-title">3. Isenção de Responsabilidade</h3>
-          <p className="policy-text">
-            O doc-facil é uma ferramenta auxiliar e não substitui a avaliação clínica presencial da equipe de saúde.
-            O aplicativo não substitui a formação médica, o julgamento clínico ou a experiência profissional.
-            Os usuários são inteiramente responsáveis pelas decisões tomadas com base nas informações fornecidas pelo aplicativo.
-          </p>
-
-          <h3 className="subsection-title">4. Propriedade Intelectual</h3>
-          <p className="policy-text">
-            Todo o conteúdo incluído no aplicativo, como textos, gráficos, logotipos, imagens, bem como a compilação destes,
-            é de propriedade do Dr. Antonio | CRM xxx-xxx e protegido por leis de direitos autorais.
-          </p>
-
-          <h3 className="subsection-title">5. Restrições de Uso</h3>
-          <p className="policy-text">
-            O usuário não tem permissão para:
-          </p>
-          <ul className="policy-list">
-            <li>Modificar ou copiar os materiais do aplicativo</li>
-            <li>Usar os materiais para qualquer finalidade comercial</li>
-            <li>Remover qualquer direito autoral ou outras notações de propriedade dos materiais</li>
-            <li>Transferir os materiais para outra pessoa ou espelhar os materiais em qualquer outro servidor</li>
-          </ul>
-
-          <h3 className="subsection-title">6. Alterações nos Termos</h3>
-          <p className="policy-text">
-            Reservamos o direito de revisar estes termos a qualquer momento, sem aviso prévio.
-            Ao usar este aplicativo, você concorda em ficar vinculado à versão atual desses termos de serviço.
-          </p>
-
-          <h3 className="subsection-title">7. Lei Aplicável</h3>
-          <p className="policy-text">
-            Estes termos são regidos e interpretados de acordo com as leis do Brasil,
-            sem considerar seus conflitos de disposições legais.
-          </p>
-
-          <h3 className="subsection-title">8. Contato</h3>
-          <p className="policy-text">
-            Para quaisquer dúvidas ou preocupações sobre estes termos, entre em contato através
-            do e-mail: fabioalxk@gmail.com@gmail.com
+          
+          <h3>
+            3. Responsabilidade Limitada
+          </h3>
+          
+          <p>
+            O aplicativo é fornecido apenas como uma ferramenta auxiliar. A avaliação clínica presencial 
+            da equipe de saúde é insubstituível.
           </p>
         </div>
-      </div>
-
-      <div className="footer">
-        <p className="footer-text">
-          © 2022-2030 doc-facil - Todos os direitos reservados
-        </p>
+        
+        <div className="agreement-section">
+          <div className="checkbox-container">
+            <input type="checkbox" id="agree" />
+            <label htmlFor="agree">
+              Eu li e concordo com os termos e condições deste Contrato de Licença de Usuário Final.
+            </label>
+          </div>
+          
+          <div className="button-group">
+            <button className="button decline" onClick={() => navigate(-1)}>
+              Recusar
+            </button>
+            <button className="button accept" onClick={() => navigate('/')}>
+              Aceitar
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Eula; 

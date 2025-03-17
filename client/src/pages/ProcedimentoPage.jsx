@@ -1,64 +1,76 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./ProcedimentoPage.scss";
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import './ProcedimentoPage.scss';
 
-function ProcedimentoPage() {
-  return (
-    <div className="procedimento-container">
-      <div className="header">
-        <Link to="/" className="back-button">←</Link>
-        <h1 className="header-title">Procedimento Adulto</h1>
-      </div>
-      
-      <div className="content">
-        <div className="section">
-          <h2 className="section-title">Preparação</h2>
-          <ul className="checklist">
-            <li className="checklist-item">Verificar equipamento</li>
-            <li className="checklist-item">Posicionamento do paciente</li>
-            <li className="checklist-item">Pré-oxigenação</li>
-            <li className="checklist-item">Medicações preparadas</li>
+const ProcedimentoPage = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [procedimento, setProcedimento] = useState(null);
+
+  useEffect(() => {
+    // Mock de dados para testes. Poderia buscar API
+    const mockProcedimentos = {
+      'classificacao-leon': {
+        titulo: 'Classificação LEON',
+        descricao: 'Protocolo para intubação traqueal em pacientes adultos',
+        conteudo: `
+          <h2>Classificação LEON</h2>
+          <p>Este procedimento...</p>
+          <h3>Etapas:</h3>
+          <ul>
+            <li>Avaliar vias aéreas</li>
+            <li>Preparar equipamento</li>
+            <li>Adm. de medicações</li>
+            <li>Monitoramento contínuo</li>
           </ul>
-        </div>
-        
-        <div className="section">
-          <h2 className="section-title">Parâmetros Recomendados</h2>
-          <div className="parameters">
-            <div className="parameter-item">
-              <span className="parameter-label">Tamanho do tubo (homem):</span>
-              <span className="parameter-value">7.5 - 8.0 mm</span>
-            </div>
-            <div className="parameter-item">
-              <span className="parameter-label">Tamanho do tubo (mulher):</span>
-              <span className="parameter-value">7.0 - 7.5 mm</span>
-            </div>
-            <div className="parameter-item">
-              <span className="parameter-label">Profundidade de inserção:</span>
-              <span className="parameter-value">21-23 cm na arcada dentária</span>
-            </div>
-          </div>
-        </div>
-        
-        <div className="section">
-          <h2 className="section-title">Procedimento</h2>
-          <ol className="procedure-steps">
-            <li className="procedure-step">Administrar sedação conforme protocolo</li>
-            <li className="procedure-step">Utilizar técnica de laringoscopia direta</li>
-            <li className="procedure-step">Visualizar cordas vocais</li>
-            <li className="procedure-step">Inserir tubo com o balonete passando as cordas</li>
-            <li className="procedure-step">Insuflar o balonete</li>
-            <li className="procedure-step">Confirmar posição com capnografia</li>
-          </ol>
+        `,
+      },
+    };
+
+    setProcedimento(mockProcedimentos[id] || null);
+  }, [id]);
+
+  if (!procedimento) {
+    return (
+      <div className="procedimento-page-container">
+        <div className="not-found">
+          Procedimento não encontrado
         </div>
       </div>
-      
-      <div className="footer">
-        <p className="disclaimer">
-          Este aplicativo é apenas um guia auxiliar. Sempre siga os protocolos institucionais locais.
+    );
+  }
+
+  return (
+    <div className="procedimento-page-container">
+      {/* Header da página */}
+      <header className="header">
+        <button
+          onClick={() => navigate(-1)}
+          className="back-button"
+          aria-label="Voltar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h1 className="title">
+          {procedimento.titulo}
+        </h1>
+      </header>
+
+      {/* Conteúdo principal */}
+      <div className="content">
+        <p className="description">
+          {procedimento.descricao}
         </p>
+        
+        <div 
+          dangerouslySetInnerHTML={{ __html: procedimento.conteudo }} 
+          className="procedimento-content"
+        />
       </div>
     </div>
   );
-}
+};
 
 export default ProcedimentoPage; 

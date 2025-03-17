@@ -22,7 +22,7 @@ function Posicionamento() {
     <div className="posicionamento-container">
       <header>
         <button className="back-button" onClick={() => navigate(-1)}>
-          ← Voltar
+          ←
         </button>
         <h1>Posicionamento</h1>
       </header>

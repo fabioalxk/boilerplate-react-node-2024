@@ -1,125 +1,171 @@
+/* ===============================================
+   Posicionamento.scss
+   Estilos para a página de posicionamento do paciente
+   =============================================== */
+
 .posicionamento-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: #fff;
-  font-family: Arial, sans-serif;
-  max-width: 500px;
-  margin: 0 auto;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-white);
+  
+  /* Header */
   header {
     display: flex;
     align-items: center;
-    padding: 1rem;
-    background-color: #4169e1;
-    color: white;
-    position: relative;
-
+    padding: 0.75rem 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    gap: 0.5rem;
+    
     .back-button {
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--color-white);
+      width: 1.75rem;
+      height: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: none;
       border: none;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
       padding: 0;
-      position: absolute;
-      left: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: translateX(-3px);
+      }
     }
-
+    
     h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
       margin: 0;
-      font-size: 1.3rem;
-      width: 100%;
+      flex: 1;
       text-align: center;
     }
   }
-
+  
+  /* Informações do Paciente */
   .patient-info-card {
-    background-color: #4169e1;
-    color: white;
-    padding: 0.6rem 1rem;
-    margin: 0;
-    font-size: 0.9rem;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    border-radius: 0 0 8px 8px;
+    justify-content: space-between;
+    background-color: var(--color-gray-100);
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    color: var(--color-gray-700);
+    border-bottom: 1px solid var(--color-gray-200);
     
     span {
-      display: inline-block;
+      padding: 0.25rem 0;
+      font-weight: 500;
       white-space: nowrap;
+    }
+  }
+  
+  /* Conteúdo principal */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    overflow-y: auto;
+    
+    h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-gray-800);
+      margin-bottom: 0.75rem;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
       
-      &:not(:last-child) {
-        margin-right: 0.6rem;
+      li {
+        font-size: 0.875rem;
+        color: var(--color-gray-700);
+        padding: 0.375rem 0;
+        position: relative;
+        padding-left: 1.25rem;
+        line-height: 1.4;
+        
+        &:before {
+          content: "•";
+          position: absolute;
+          left: 0.375rem;
+          color: var(--color-primary);
+          font-weight: bold;
+        }
+      }
+    }
+    
+    .image-card {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5rem 0 1rem;
+      max-height: 50vh;
+      
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+      }
+    }
+    
+    .prosseguir-button {
+      margin-top: auto;
+      align-self: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 0.75rem 1.25rem;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--border-radius-md);
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      
+      &:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-2px);
       }
     }
   }
+}
 
-  .content {
-    flex: 1;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-
-    h2 {
-      color: #4169e1;
-      margin: 2rem 0 1rem;
-      font-size: 1.2rem;
-      font-weight: 500;
-      text-align: center;
+/* Responsividade */
+@media (max-width: 480px) {
+  .posicionamento-container {
+    header {
+      padding: 0.5rem 0.75rem;
     }
-
-    ul {
-      color: #4169e1;
-      margin: 0 0 1.5rem;
-      padding-left: 1.2rem;
-      list-style-type: disc;
+    
+    .patient-info-card {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.7rem;
+      flex-wrap: wrap;
       
-      li {
-        margin-bottom: 0.7rem;
-        font-size: 0.95rem;
-        padding-left: 0.3rem;
+      span {
+        width: 50%;
+        padding: 0.125rem 0;
       }
     }
-
-    .image-card {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0.5rem auto 2.5rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #f9f9f9;
-      padding: 0.5rem;
-      max-width: 90%;
-
-      img {
-        max-width: 100%;
-        max-height: 250px;
-        border-radius: 4px;
-      }
-    }
-
-    .prosseguir-button {
-      width: 100%;
-      padding: 1rem;
-      background-color: #4169e1;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      margin: auto 0 1.5rem;
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: darken(#4169e1, 5%);
+    
+    .content {
+      padding: 0.75rem;
+      
+      ul li {
+        font-size: 0.8rem;
       }
     }
   }

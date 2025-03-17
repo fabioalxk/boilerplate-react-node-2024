@@ -1,145 +1,163 @@
+/* ===============================================
+   PreOxigenacao.scss
+   Estilos para a página de pré-oxigenação
+   =============================================== */
+
 .pre-oxigenacao-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background-color: #4169e1;
-  font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-.header {
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  position: relative;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  height: 60px; /* Altura fixa para padronização */
-}
-
-.back-button {
-  color: white;
-  font-size: 1.5rem;
-  text-decoration: none;
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.header-content {
-  text-align: center;
-}
-
-.header-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
-}
-
-.header-subtitle {
-  font-size: 1rem;
-  opacity: 0.9;
-}
-
-.info-button {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: white;
-  color: #4169e1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.patient-info {
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  font-size: 0.9rem;
-  background-color: rgba(255, 255, 255, 0.15);
-  margin: 0 10px 15px 10px;
-  border-radius: 10px;
-}
-
-.info-column {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-white);
   
-  &.right {
-    text-align: right;
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    
+    .back-button {
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: translateX(-3px);
+      }
+    }
+    
+    .header-content {
+      flex: 1;
+      text-align: center;
+      
+      .header-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+    
+    .info-button {
+      font-size: 1.125rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+  
+  /* Informações do Paciente */
+  .patient-info {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-gray-100);
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    color: var(--color-gray-700);
+    border-bottom: 1px solid var(--color-gray-200);
+    
+    .info-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      
+      &.left {
+        text-align: left;
+      }
+      
+      &.right {
+        text-align: right;
+      }
+      
+      .info-item {
+        white-space: nowrap;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  /* Conteúdo principal */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    overflow-y: auto;
+    justify-content: space-between;
+    
+    .instruction-text {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--color-gray-800);
+      text-align: center;
+      margin-bottom: 1rem;
+      padding: 0 0.5rem;
+      font-weight: 500;
+    }
+    
+    .image-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0;
+      max-height: 55vh;
+      
+      .procedure-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+      }
+    }
+    
+    .blue-button {
+      margin-top: auto;
+      align-self: center;
+      width: 100%;
+      max-width: 400px;
+    }
   }
 }
 
-.info-item {
-  line-height: 1.3;
-  font-size: 0.95rem;
-}
-
-.content {
-  flex: 1;
-  padding: 0 20px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.instruction-text {
-  color: white;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 20px;
-  line-height: 1.4;
-  padding: 0 10px;
-}
-
-.image-container {
-  width: 85%;
-  max-width: 350px;
-  margin: 20px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-}
-
-.procedure-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: block;
-}
-
-.blue-button {
-  width: 90%;
-  max-width: 400px;
-  padding: 15px;
-  background-color: #4169e1;
-  border: 2px solid white;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: white;
-  margin: 20px auto 10px auto;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  
-  &:hover {
-    background-color: #3658c5;
+/* Responsividade */
+@media (max-width: 480px) {
+  .pre-oxigenacao-container {
+    .header {
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .patient-info {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.7rem;
+    }
+    
+    .content {
+      padding: 0.75rem;
+      
+      .instruction-text {
+        font-size: 0.8rem;
+      }
+    }
   }
 } 

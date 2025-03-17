@@ -1,129 +1,351 @@
-.leon-container {
+/* ===============================================
+   ClassificacaoLeon.scss
+   Estilos para a página de classificação de Leon
+   =============================================== */
+
+.classificacao-leon-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background-color: #4169e1; // Azul royal como na imagem
-  font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-.header {
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 60px; /* Altura fixa para padronização */
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 5px; /* Adicionado margem inferior para criar mais espaço */
-}
-
-.back-button {
-  color: white;
-  font-size: 1.5rem;
-  text-decoration: none;
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.header-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: white;
-  margin: 0;
-  text-align: center;
-}
-
-.info-button {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: white;
-  color: #4169e1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Estilos específicos para a página */
-.leon-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 20px;
-  max-width: 500px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.buttons-container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-
-.leon-option {
-  background-color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  margin: 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--color-white);
   
-  &:hover {
-    transform: translateY(-2px);
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    color: var(--color-white);
+    gap: 0.5rem;
+    
+    .back-button {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--color-white);
+      width: 1.75rem;
+      height: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      
+      &:hover {
+        transform: translateX(-3px);
+      }
+    }
+    
+    .header-title {
+      flex: 1;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+      text-align: center;
+      color: var(--color-white);
+    }
+  }
+  
+  /* Conteúdo principal */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    overflow-y: auto;
+    
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-gray-800);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .instructions {
+      font-size: 0.875rem;
+      color: var(--color-gray-700);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .classification-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      
+      .classification-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0.5rem;
+        background-color: var(--color-gray-100);
+        border-radius: var(--border-radius-md);
+        border: 1px solid var(--color-gray-200);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          transform: translateY(-2px);
+          background-color: var(--color-gray-50);
+          box-shadow: var(--shadow-sm);
+        }
+        
+        &.selected {
+          background-color: rgba(79, 70, 229, 0.1);
+          border-color: var(--color-primary);
+          box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+        
+        .grade {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: var(--color-primary);
+          margin-bottom: 0.5rem;
+        }
+        
+        .description {
+          font-size: 0.75rem;
+          color: var(--color-gray-700);
+          text-align: center;
+          line-height: 1.3;
+        }
+        
+        .image-container {
+          width: 100%;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 0.5rem;
+          
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+    
+    .result-section {
+      text-align: center;
+      margin-top: auto;
+      padding-top: 1rem;
+      
+      .result-text {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--color-gray-800);
+        margin-bottom: 1rem;
+      }
+      
+      .selected-grade {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    .blue-button {
+      margin-top: auto;
+      align-self: center;
+      width: 100%;
+      max-width: 400px;
+      position: sticky;
+      bottom: 1rem;
+    }
+  }
+  
+  /* Adicionando estilos para a visualização de protocolo */
+  .protocol-info {
+    background-color: var(--color-gray-100);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--color-gray-200);
+    
+    .protocol-text {
+      color: var(--color-gray-700);
+      margin-bottom: 0;
+      line-height: 1.4;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  }
+  
+  .protocol-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-gray-800);
+    margin-bottom: 0.5rem;
+  }
+  
+  .protocol-description {
+    color: var(--color-gray-700);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    font-size: 0.875rem;
+  }
+  
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      
+      .step-number {
+        background-color: rgba(79, 70, 229, 0.1);
+        color: var(--color-primary);
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+      
+      .step-content {
+        flex: 1;
+        
+        .step-title {
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: var(--color-gray-800);
+          margin-bottom: 0.25rem;
+        }
+        
+        .step-description {
+          color: var(--color-gray-700);
+          margin-bottom: 0;
+          line-height: 1.4;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+  
+  .action-button {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    
+    button {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      border-radius: var(--border-radius-md);
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+      
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
   }
 }
 
-.leon-option:first-child {
-  /* Removido o border-bottom */
-}
-
-.leon-option:last-child {
-  /* Mantido vazio para clareza */
-}
-
-.option-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.option-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.option-subtitle {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 4px;
-}
-
-.arrow-icon {
-  width: 24px;
-  height: 24px;
-  background-color: #4169e1;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
+/* Responsividade */
+@media (max-width: 480px) {
+  .classificacao-leon-container {
+    .header {
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .content {
+      padding: 0.75rem;
+      
+      .classification-grid {
+        gap: 0.5rem;
+        
+        .classification-card {
+          padding: 0.75rem 0.25rem;
+          
+          .grade {
+            font-size: 1.125rem;
+          }
+          
+          .description {
+            font-size: 0.7rem;
+          }
+          
+          .image-container {
+            height: 60px;
+          }
+        }
+      }
+      
+      .instructions,
+      .section-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+    
+    .protocol-info {
+      padding: 0.5rem 0.75rem;
+      
+      .protocol-text {
+        font-size: 0.8rem;
+      }
+    }
+    
+    .protocol-title {
+      font-size: 1rem;
+    }
+    
+    .protocol-description {
+      font-size: 0.8rem;
+    }
+    
+    .steps-list {
+      gap: 0.5rem;
+      
+      .step-item {
+        .step-number {
+          width: 1.25rem;
+          height: 1.25rem;
+          font-size: 0.75rem;
+        }
+        
+        .step-content {
+          .step-title {
+            font-size: 0.9rem;
+          }
+          
+          .step-description {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
 } 
