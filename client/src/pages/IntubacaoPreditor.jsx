@@ -1,80 +1,91 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./IntubacaoPreditor.scss";
 
 function IntubacaoPreditor() {
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const navigate = useNavigate();
 
-  const handleProsseguir = () => {
+  const handleContinue = () => {
     if (checkboxChecked) {
       navigate('/dados-paciente');
     }
   };
 
   return (
-    <div className="intubacao-preditor-container">
-      <div className="header">
-        <Link to="/classificacao-leon" className="back-button">←</Link>
-        <div className="header-content">
-          <h1 className="header-title">Intubação</h1>
-          <h2 className="header-subtitle">com preditor</h2>
-          <h3 className="header-description">de VAD</h3>
+    <div className="page-container">
+      {/* Header minimalista */}
+      <header className="header">
+        <button
+          onClick={() => navigate('/classificacao-leon')}
+          className="back-button"
+          aria-label="Voltar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h1 className="title">Intubação com Preditor</h1>
+      </header>
+
+      {/* Conteúdo principal */}
+      <div className="content-with-footer">
+        <div className="step-indicator">
+          <div className="step">1</div>
+          <div className="step active">2</div>
+          <div className="step">3</div>
+          <div className="step">4</div>
+          <div className="step">5</div>
         </div>
-      </div>
-      
-      <div className="content">
-        <div className="consider-section">
-          <h2 className="section-title">CONSIDERE:</h2>
-          
-          <ul className="numbered-list">
-            <li className="list-item">
-              <div className="number">1</div>
-              <div className="item-text">Solicite ajuda de outro médico;</div>
-            </li>
-            <li className="list-item">
-              <div className="number">2</div>
-              <div className="item-text">O procedimento de intubação deverá ser realizado pelo médico mais experiente;</div>
-            </li>
-            <li className="list-item">
-              <div className="number">3</div>
-              <div className="item-text">Solicite todo o material de via aérea difícil;</div>
-            </li>
-            <li className="list-item">
-              <div className="number">4</div>
-              <div className="item-text">Considere realizar o procedimento com o paciente acordado;</div>
-            </li>
-            <li className="list-item">
-              <div className="number">5</div>
-              <div className="item-text">Considere via aérea cirúrgica.</div>
-            </li>
-          </ul>
-          
+
+        <div className="preditor-card">
+          <h2>Via Aérea Difícil (VAD)</h2>
+          <p className="subtitle">
+            Atenção: Preditores de VAD foram identificados
+          </p>
+
+          <div className="recommendations">
+            <h3>Considere as seguintes ações:</h3>
+            <ul className="recommendations-list">
+              <li>Solicitar ajuda de outro médico</li>
+              <li>O procedimento de intubação deve ser realizado pelo médico mais experiente</li>
+              <li>Solicitar todo o material de via aérea difícil</li>
+              <li>Considerar realizar o procedimento com o paciente acordado</li>
+              <li>Considerar via aérea cirúrgica</li>
+            </ul>
+          </div>
+
           <div className="checkbox-container">
             <label className="checkbox-label">
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 checked={checkboxChecked}
                 onChange={() => setCheckboxChecked(!checkboxChecked)}
                 className="checkbox-input"
               />
-              <div className="checkbox-text">
-                Entendendo os riscos que envolvem a administração de drogas sedativas e hipnóticas em pacientes com preditores de Via Aérea Difícil.
-              </div>
+              <span className="checkbox-text">
+                Entendo os riscos que envolvem a administração de drogas sedativas e hipnóticas em pacientes com preditores de Via Aérea Difícil.
+              </span>
             </label>
           </div>
         </div>
-        
-        <button 
-          className={`continue-button ${!checkboxChecked ? 'disabled' : ''}`}
+
+      </div>
+
+      <div className="footer-buttons">
+        <button
+          className={`action-button ${!checkboxChecked ? 'disabled' : ''}`}
           disabled={!checkboxChecked}
-          onClick={handleProsseguir}
+          onClick={handleContinue}
         >
-          Prosseguir
+          Prosseguir para Dados do Paciente
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
         </button>
       </div>
     </div>
   );
 }
 
-export default IntubacaoPreditor; 
+export default IntubacaoPreditor;

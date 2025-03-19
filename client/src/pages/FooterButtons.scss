@@ -1,0 +1,103 @@
+// FooterButtons.scss - Estilo para botões no footer
+@use "sass:math";
+
+// Variáveis
+$primary-color: #4f46e5;
+$text-color: #111827;
+$light-text: #6b7280;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$white: #ffffff;
+
+// Classe para o container principal de cada página
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+}
+
+// Conteúdo que deve permitir scroll e garantir espaço para o footer
+.content-with-footer {
+    flex: 1;
+    padding: 2rem 1.5rem calc(4.5rem + 2rem); // Espaço extra para o footer
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+// Container fixo para botões do footer
+.footer-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $white;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid $gray-200;
+}
+
+// Botão de continuar/prosseguir
+.action-button {
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    min-width: 250px;
+    justify-content: center;
+
+    &:hover:not(.disabled) {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-2px);
+    }
+
+    &.disabled {
+        background-color: $gray-200;
+        color: $light-text;
+        cursor: not-allowed;
+    }
+
+    svg {
+        transition: transform 0.2s;
+    }
+
+    &:hover:not(.disabled) svg {
+        transform: translateX(4px);
+    }
+}
+
+// Responsividade
+@media (max-width: 640px) {
+    .content-with-footer {
+        padding: 1.5rem 1rem calc(4rem + 1.5rem);
+        gap: 1.5rem;
+    }
+
+    .footer-buttons {
+        padding: 0.75rem 1rem;
+    }
+
+    .action-button {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+        min-width: 200px;
+    }
+}

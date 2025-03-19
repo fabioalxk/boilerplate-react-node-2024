@@ -1,351 +1,229 @@
-/* ===============================================
-   ClassificacaoLeon.scss
-   Estilos para a página de classificação de Leon
-   =============================================== */
+// ClassificacaoLeon.scss - Design minimalista
+@import './FooterButtons.scss';
 
-.classificacao-leon-container {
+// Variáveis
+$primary-color: #4f46e5;
+$text-color: #111827;
+$light-text: #6b7280;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$white: #ffffff;
+
+// Header
+.header {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: auto;
-  background-color: var(--color-white);
-  
-  /* Header */
-  .header {
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: $primary-color;
+  color: $white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    margin-right: 1rem;
     display: flex;
     align-items: center;
-    padding: 0.75rem 1rem;
-    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
-    color: var(--color-white);
-    gap: 0.5rem;
-    
-    .back-button {
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      line-height: 1;
-      color: var(--color-white);
-      width: 1.75rem;
-      height: 1.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease;
-      cursor: pointer;
-      
-      &:hover {
-        transform: translateX(-3px);
-      }
-    }
-    
-    .header-title {
-      flex: 1;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0;
-      text-align: center;
-      color: var(--color-white);
-    }
-  }
-  
-  /* Conteúdo principal */
-  .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    overflow-y: auto;
-    
-    .section-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--color-gray-800);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    
-    .instructions {
-      font-size: 0.875rem;
-      color: var(--color-gray-700);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    
-    .classification-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      
-      .classification-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0.5rem;
-        background-color: var(--color-gray-100);
-        border-radius: var(--border-radius-md);
-        border: 1px solid var(--color-gray-200);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        
-        &:hover {
-          transform: translateY(-2px);
-          background-color: var(--color-gray-50);
-          box-shadow: var(--shadow-sm);
-        }
-        
-        &.selected {
-          background-color: rgba(79, 70, 229, 0.1);
-          border-color: var(--color-primary);
-          box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
-        }
-        
-        .grade {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: var(--color-primary);
-          margin-bottom: 0.5rem;
-        }
-        
-        .description {
-          font-size: 0.75rem;
-          color: var(--color-gray-700);
-          text-align: center;
-          line-height: 1.3;
-        }
-        
-        .image-container {
-          width: 100%;
-          height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 0.5rem;
-          
-          img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-          }
-        }
-      }
-    }
-    
-    .result-section {
-      text-align: center;
-      margin-top: auto;
-      padding-top: 1rem;
-      
-      .result-text {
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--color-gray-800);
-        margin-bottom: 1rem;
-      }
-      
-      .selected-grade {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--color-primary);
-        margin-bottom: 1.5rem;
-      }
-    }
-    
-    .blue-button {
-      margin-top: auto;
-      align-self: center;
-      width: 100%;
-      max-width: 400px;
-      position: sticky;
-      bottom: 1rem;
-    }
-  }
-  
-  /* Adicionando estilos para a visualização de protocolo */
-  .protocol-info {
-    background-color: var(--color-gray-100);
-    border-radius: var(--border-radius-md);
-    padding: 0.75rem;
-    margin-bottom: 0.75rem;
-    border: 1px solid var(--color-gray-200);
-    
-    .protocol-text {
-      color: var(--color-gray-700);
-      margin-bottom: 0;
-      line-height: 1.4;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-  }
-  
-  .protocol-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-gray-800);
-    margin-bottom: 0.5rem;
-  }
-  
-  .protocol-description {
-    color: var(--color-gray-700);
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-    font-size: 0.875rem;
-  }
-  
-  .steps-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      
-      .step-number {
-        background-color: rgba(79, 70, 229, 0.1);
-        color: var(--color-primary);
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        font-size: 0.85rem;
-        flex-shrink: 0;
-        margin-top: 0.1rem;
-      }
-      
-      .step-content {
-        flex: 1;
-        
-        .step-title {
-          font-size: 0.95rem;
-          font-weight: 600;
-          color: var(--color-gray-800);
-          margin-bottom: 0.25rem;
-        }
-        
-        .step-description {
-          color: var(--color-gray-700);
-          margin-bottom: 0;
-          line-height: 1.4;
-          font-size: 0.85rem;
-        }
-      }
-    }
-  }
-  
-  .action-button {
-    margin-top: 1rem;
-    display: flex;
     justify-content: center;
-    
-    button {
-      background-color: var(--color-primary);
-      color: var(--color-white);
-      border: none;
-      border-radius: var(--border-radius-md);
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
-      
-      &:hover {
-        background-color: var(--color-primary-dark);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-      
-      svg {
-        width: 1rem;
-        height: 1rem;
-      }
+    transition: color 0.2s;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $white;
+  }
+}
+
+// Indicador de etapas
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  .step {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: $light-text;
+    background-color: $gray-100;
+    border: 1px solid $gray-200;
+    font-size: 1rem;
+    position: relative;
+
+    &.active {
+      color: $white;
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &:not(:last-child):after {
+      content: '';
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1rem;
+      height: 1px;
+      background-color: $gray-200;
     }
   }
 }
 
-/* Responsividade */
-@media (max-width: 480px) {
-  .classificacao-leon-container {
-    .header {
-      padding: 0.5rem 0.75rem;
+// Card LEON
+.leon-card {
+  background-color: $white;
+  border-radius: 0.75rem;
+  border: 1px solid $gray-200;
+  padding: 2rem;
+  width: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    color: $light-text;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 0.975rem;
+  }
+}
+
+// Tabela LEON
+.leon-table {
+  border: 1px solid $gray-200;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+
+  .leon-row {
+    display: grid;
+    grid-template-columns: 3rem 1fr 1fr;
+    border-bottom: 1px solid $gray-200;
+
+    &:last-child {
+      border-bottom: none;
     }
-    
-    .content {
-      padding: 0.75rem;
-      
-      .classification-grid {
-        gap: 0.5rem;
-        
-        .classification-card {
-          padding: 0.75rem 0.25rem;
-          
-          .grade {
-            font-size: 1.125rem;
-          }
-          
-          .description {
-            font-size: 0.7rem;
-          }
-          
-          .image-container {
-            height: 60px;
-          }
-        }
-      }
-      
-      .instructions,
-      .section-title {
-        font-size: 0.8rem;
-        margin-bottom: 0.75rem;
-      }
+
+    &.header-row {
+      background-color: $gray-100;
+      font-weight: 600;
     }
-    
-    .protocol-info {
-      padding: 0.5rem 0.75rem;
-      
-      .protocol-text {
-        font-size: 0.8rem;
-      }
+  }
+
+  .leon-cell {
+    padding: 0.75rem 1rem;
+    border-right: 1px solid $gray-200;
+    font-size: 0.875rem;
+
+    &:last-child {
+      border-right: none;
     }
-    
-    .protocol-title {
-      font-size: 1rem;
+
+    &:first-child {
+      font-weight: 600;
+      color: $primary-color;
+      text-align: center;
     }
-    
-    .protocol-description {
-      font-size: 0.8rem;
+  }
+}
+
+.instructions {
+  margin-top: 1.5rem;
+
+  p {
+    font-size: 0.875rem;
+    color: $light-text;
+    line-height: 1.5;
+  }
+}
+
+.disclaimer {
+  background-color: rgba($primary-color, 0.05);
+  border-left: 3px solid $primary-color;
+  padding: 1rem;
+  width: 100%;
+
+  p {
+    font-size: 0.875rem;
+    color: $light-text;
+    line-height: 1.5;
+  }
+}
+
+
+// Responsividade
+@media (max-width: 640px) {
+  .header {
+    padding: 0.875rem 1rem;
+
+    .title {
+      font-size: 1.25rem;
     }
-    
-    .steps-list {
-      gap: 0.5rem;
-      
-      .step-item {
-        .step-number {
-          width: 1.25rem;
-          height: 1.25rem;
-          font-size: 0.75rem;
-        }
-        
-        .step-content {
-          .step-title {
-            font-size: 0.9rem;
-          }
-          
-          .step-description {
-            font-size: 0.8rem;
-          }
-        }
+  }
+
+  .content {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .step-indicator {
+    gap: 0.75rem;
+
+    .step {
+      width: 2rem;
+      height: 2rem;
+      font-size: 0.875rem;
+
+      &:not(:last-child):after {
+        right: -0.75rem;
+        width: 0.75rem;
       }
     }
   }
-} 
+
+  .leon-card {
+    padding: 1.5rem 1rem;
+
+    h2 {
+      font-size: 1.125rem;
+    }
+
+    .subtitle {
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .leon-table {
+    font-size: 0.75rem;
+
+    .leon-cell {
+      padding: 0.625rem 0.5rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  .continue-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}

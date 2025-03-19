@@ -1,51 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ProcedimentoPage.scss';
 
 const ProcedimentoPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const [procedimento, setProcedimento] = useState(null);
 
-  useEffect(() => {
-    // Mock de dados para testes. Poderia buscar API
-    const mockProcedimentos = {
-      'classificacao-leon': {
-        titulo: 'Classificação LEON',
-        descricao: 'Protocolo para intubação traqueal em pacientes adultos',
-        conteudo: `
-          <h2>Classificação LEON</h2>
-          <p>Este procedimento...</p>
-          <h3>Etapas:</h3>
-          <ul>
-            <li>Avaliar vias aéreas</li>
-            <li>Preparar equipamento</li>
-            <li>Adm. de medicações</li>
-            <li>Monitoramento contínuo</li>
-          </ul>
-        `,
-      },
-    };
-
-    setProcedimento(mockProcedimentos[id] || null);
-  }, [id]);
-
-  if (!procedimento) {
-    return (
-      <div className="procedimento-page-container">
-        <div className="not-found">
-          Procedimento não encontrado
-        </div>
-      </div>
-    );
-  }
+  const handleStartProcedure = () => {
+    navigate('/classificacao-leon');
+  };
 
   return (
-    <div className="procedimento-page-container">
-      {/* Header da página */}
+    <div className="page-container">
+      {/* Header minimalista */}
       <header className="header">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
           className="back-button"
           aria-label="Voltar"
         >
@@ -53,24 +22,48 @@ const ProcedimentoPage = () => {
             <path d="M19 12H5M12 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <h1 className="title">
-          {procedimento.titulo}
-        </h1>
+        <h1 className="title">Procedimento Adulto</h1>
       </header>
 
       {/* Conteúdo principal */}
-      <div className="content">
-        <p className="description">
-          {procedimento.descricao}
-        </p>
-        
-        <div 
-          dangerouslySetInnerHTML={{ __html: procedimento.conteudo }} 
-          className="procedimento-content"
-        />
+      <div className="content-with-footer">
+        <div className="procedure-info">
+          <p className="procedure-description">
+            Protocolo sequencial para intubação traqueal em pacientes adultos
+          </p>
+
+          <div className="procedure-flow">
+            <h2>Fluxo do Procedimento</h2>
+            <ol className="flow-steps">
+              <li>Classificação LEON</li>
+              <li>Intubação com Preditor</li>
+              <li>Dados do Paciente</li>
+              <li>Pré-Oxigenação</li>
+              <li>Posicionamento</li>
+            </ol>
+          </div>
+
+          <div className="disclaimer">
+            <p>IMPORTANTE: Este guia serve apenas como um auxílio. A avaliação clínica
+              presencial da equipe de saúde é insubstituível.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div className="footer-buttons">
+        <button
+          className="action-button"
+          onClick={handleStartProcedure}
+        >
+          Iniciar Procedimento
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
       </div>
     </div>
   );
 };
 
-export default ProcedimentoPage; 
+export default ProcedimentoPage;

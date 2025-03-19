@@ -29,147 +29,91 @@ function Home() {
 
   return (
     <div className="home-container">
-      {/* Header/Navegação */}
+      {/* Header minimalista */}
       <header className="header">
-        <div className="header-content">
-          <div className="navbar">
-            <a href="/" className="logo-link">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 12.5C4.5 8.91 7.41 6 11 6C14.59 6 17.5 8.91 17.5 12.5C17.5 16.09 14.59 19 11 19C7.41 19 4.5 16.09 4.5 12.5Z" stroke="#4f46e5" strokeWidth="2" />
-                <path d="M17.5 12H22" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" />
-                <path d="M20 9L20 15" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-              <span className="logo-text">doc-facil</span>
-            </a>
-            
-            {/* Botão de menu hamburguer para mobile */}
-            {isMobile && (
-              <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                className="menu-button"
-                aria-label="Menu"
-              >
-                {isMenuOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 6L6 18M6 6l12 12"></path>
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 12h18M3 6h18M3 18h18"></path>
-                  </svg>
-                )}
-              </button>
-            )}
-            
-            {/* Menu para desktop */}
-            {!isMobile && (
-              <nav className="desktop-nav">
-                <Link to="/" className="nav-link active">
-                  Home
-                  <span className="active-indicator"></span>
-                </Link>
-                <Link to="/politica-privacidade" className="nav-link">
-                  Política de Privacidade
-                </Link>
-                <Link to="/eula" className="nav-link">
-                  EULA
-                </Link>
-              </nav>
-            )}
-          </div>
-          
-          {/* Menu mobile expandido */}
-          {isMobile && isMenuOpen && (
-            <div className="mobile-menu">
-              <Link 
-                to="/" 
-                className="nav-link active"
-                onClick={handleLinkClick}
-              >
-                Home
-              </Link>
-              <Link 
-                to="/politica-privacidade" 
-                className="nav-link"
-                onClick={handleLinkClick}
-              >
-                Política de Privacidade
-              </Link>
-              <Link 
-                to="/eula" 
-                className="nav-link"
-                onClick={handleLinkClick}
-              >
-                EULA
-              </Link>
-            </div>
-          )}
+        <div className="logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 12.5C4.5 8.91 7.41 6 11 6C14.59 6 17.5 8.91 17.5 12.5C17.5 16.09 14.59 19 11 19C7.41 19 4.5 16.09 4.5 12.5Z" stroke="#4f46e5" strokeWidth="2" />
+            <path d="M17.5 12H22" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" />
+            <path d="M20 9L20 15" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+          <span>doc-facil</span>
         </div>
+
+        {/* Botão de menu mobile */}
+        {isMobile && (
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="menu-button"
+            aria-label="Menu"
+          >
+            {isMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6L6 18M6 6l12 12"></path>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+              </svg>
+            )}
+          </button>
+        )}
+
+        {/* Menu para desktop */}
+        {!isMobile && (
+          <nav className="nav">
+            <Link to="/" className="nav-link active">Home</Link>
+            <Link to="/politica-privacidade" className="nav-link">Política</Link>
+            <Link to="/eula" className="nav-link">EULA</Link>
+          </nav>
+        )}
       </header>
 
-      {/* Main Content */}
-      <div className="main-content">
-        {/* Hero Section */}
-        <section className="hero-section">
-          <div className="container">
-            <h1 className="hero-title">doc-facil</h1>
-            <p className="hero-subtitle">
-              Assistente médico para intubação traqueal em pacientes adultos
-            </p>
-          </div>
+      {/* Menu mobile */}
+      {isMobile && isMenuOpen && (
+        <div className="mobile-menu">
+          <Link to="/" className="nav-link active" onClick={handleLinkClick}>Home</Link>
+          <Link to="/politica-privacidade" className="nav-link" onClick={handleLinkClick}>Política</Link>
+          <Link to="/eula" className="nav-link" onClick={handleLinkClick}>EULA</Link>
+        </div>
+      )}
+
+      {/* Conteúdo principal */}
+      <main className="main">
+        {/* Hero section */}
+        <section className="hero">
+          <h1>doc-facil</h1>
+          <p>Assistente médico para intubação traqueal em pacientes adultos</p>
         </section>
 
-        {/* Procedures Section */}
-        <section className="procedures-section">
-          <div className="container">
-            <h2 className="section-title">Procedimentos Disponíveis</h2>
-            
-            <div className="procedures-grid">
-              <Link to="/classificacao-leon" className="procedure-card">
-                <div className="card-content">
-                  <div className="card-text">
-                    <h3 className="card-title">Classificação LEON</h3>
-                    <p className="card-description">
-                      Protocolo para intubação traqueal em pacientes adultos
-                    </p>
-                  </div>
-                  <div className="chevron-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M9 18l6-6-6-6"></path>
-                    </svg>
-                  </div>
-                </div>
-              </Link>
+        {/* Procedimento card */}
+        <section className="procedure-section">
+          <Link to="/procedimento" className="procedure-card">
+            <div className="card-content">
+              <h2>Procedimento Adulto</h2>
+              <p>Protocolo sequencial para intubação traqueal em pacientes adultos</p>
+              <div className="arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </div>
             </div>
-          </div>
+          </Link>
         </section>
+      </main>
 
-        {/* Footer */}
-        <footer className="footer">
-          <div className="container">
-            <div className="footer-content">
-              <div className="author-info">
-                <p className="author-title">Aplicativo médico por</p>
-                <p className="author-name">Dr. Antonio | CRM xxx-xxx</p>
-              </div>
-              
-              <div className="footer-links">
-                <Link to="/politica-privacidade" className="footer-link">
-                  Política de Privacidade
-                </Link>
-                <span className="divider">|</span>
-                <Link to="/eula" className="footer-link">
-                  EULA
-                </Link>
-              </div>
-              
-              <div className="copyright">
-                © {new Date().getFullYear()} doc-facil. Todos os direitos reservados.
-              </div>
-            </div>
+      {/* Footer minimalista */}
+      <footer className="footer">
+        <div className="footer-content">
+          <span>Dr. Antonio | CRM xxx-xxx</span>
+          <div className="footer-links">
+            <Link to="/politica-privacidade">Política</Link>
+            <span>|</span>
+            <Link to="/eula">EULA</Link>
           </div>
-        </footer>
-      </div>
+          <span>© {new Date().getFullYear()} doc-facil</span>
+        </div>
+      </footer>
     </div>
   );
 }
